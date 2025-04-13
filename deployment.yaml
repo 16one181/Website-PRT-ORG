@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: website-prt-org
+  labels:
+    app: website-prt-org
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: website-prt-org
+  template:
+    metadata:
+      labels:
+        app: website-prt-org
+    spec:
+      containers:
+      - name: website-prt-org
+        image: your-dockerhub-username/website-prt-org:latest
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
